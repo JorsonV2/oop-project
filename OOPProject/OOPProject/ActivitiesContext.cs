@@ -21,10 +21,15 @@ namespace OOPProject
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Leader> Leaders { get; set; }
-        public virtual DbSet<Participant> Participants { get; set; }
-        public virtual DbSet<Activitie> Activities { get; set; }
+        public virtual MyDbSet<Admin> Admins { get; set; }
+        public virtual MyDbSet<Leader> Leaders { get; set; }
+        public virtual MyDbSet<Participant> Participants { get; set; }
+        public virtual MyDbSet<Activitie> Activities { get; set; }
+    }
+
+    public class MyDbSet<TEntity> : DbSet<TEntity> where TEntity : class
+    {
+        public Type GetEntityType() => typeof(TEntity);
     }
 
     public abstract class User
