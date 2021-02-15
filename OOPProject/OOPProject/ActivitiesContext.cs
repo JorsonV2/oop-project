@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OOPProject
 {
@@ -22,46 +23,77 @@ namespace OOPProject
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Leader> Leaders { get; set; }
-        public virtual DbSet<Participant> Participants { get; set; }
+        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Activitie> Activities { get; set; }
+        public virtual DbSet<ActivitieParticipant> ActivitiesParticipants { get; set; }
+        public virtual DbSet<ParticipantDescription> ParticipantsDescriptions { get; set; }
+
     }
 
-    public abstract class User
+    public enum UserType
     {
-        public string Name { get; set; }
+        Admin,
+        Leader,
+        Participant
+    }
+
+    public class User
+    {
+        [Key]
         public string Login { get; set; }
         public string Password { get; set; }
-    }
+        public string Name { get; set; }
+        public UserType Type { get; set; }
 
-    public class Leader : User
-    {
-        public int LeaderId { get; set; }
-    }
+        public virtual ICollection<Activitie> Activities { get; set; }
+        public virtual ICollection<ParticipantDescription> ParticipantsDescriptions { get; set; }
+        public virtual ICollection<ActivitieParticipant> ActivitiesParticipants { get; set; }
 
-    public class Participant : User
-    {
-        public int ParticipantId { get; set; }
-    }
-
-    public class Admin : User
-    {
-        public int AdminId { get; set; }
     }
 
     public class Activitie
     {
+        [Key]
         public int ActivitieId { get; set; }
+        public string Name { get; set; }
+        public DateTime StartDate { get; set; }
+        public TimeSpan Duration { get; set; }
+        public int ParticipantsNumber { get; set; }
+        public string LeaderLogin { get; set; }
 
-        public DateTime StartDateTime { get; set; }
-        public TimeSpan DurationTime { get; set; }
+        [ForeignKey("LeaderLogin")]
+        public virtual User User { get; set; }
+        public virtual ICollection<ActivitieParticipant> ActivitiesParticipants { get; set; }
+    }
+
+    public class ActivitieParticipant
+    {
+        [Key]
+        public int Id { get; set; }
+        public int ActivitieId { get; set; }
+        public string ParticipantLogin { get; set; }
+        public DateTime SignUpDate { get; set; }
+
+        [ForeignKey("ActivitieId")]
+        public virtual Activitie Activitie { get; set; }
+        [ForeignKey("ParticipantLogin")]
+        public virtual User User { get; set; }
+
+        
+    }
+    
+    public class ParticipantDescription
+    {
+        [Key]
+        public int Id { get; set; }
+        public string ParticipantLogin { get; set; }
+        public string LeaderLogin { get; set; }
         public string Description { get; set; }
-        public int ParticipantsLimit { get; set; }
-        public virtual List<Participant> Participants { get; set; }
-        public int LeaderId { get; set; }
-        public virtual Leader Leader { get; set; }
 
+        [ForeignKey("ParticipantLogin")]
+        public virtual User Participant { get; set; }
+        [ForeignKey("LeaderLogin")]
+        public virtual User Leader { get; set; }
     }
 
 }

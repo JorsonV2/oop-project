@@ -22,6 +22,7 @@ namespace OOPProject
         public Login()
         {
             InitializeComponent();
+            Model model = new Model();
         }
     }
 }
