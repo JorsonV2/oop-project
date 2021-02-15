@@ -15,14 +15,13 @@ using System.Windows.Shapes;
 namespace OOPProject
 {
     /// <summary>
-    /// Logika interakcji dla klasy Login.xaml
+    /// Logika interakcji dla klasy AdminWindow.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class AdminWindow : Window
     {
-        public Login()
+        public AdminWindow()
         {
             InitializeComponent();
-            Model model = new Model();
         }
     }
 }
