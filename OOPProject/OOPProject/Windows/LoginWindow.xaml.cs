@@ -35,6 +35,7 @@ namespace OOPProject
                         new ParticipantWindow().Show();
                         break;
                 }
+            Close();
         }
     }
 }
