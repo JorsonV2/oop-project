@@ -22,6 +22,7 @@ namespace OOPProject
     public partial class AdminWindow : Window
     {
         private User user;
+        private ListCollectionView groupedUsers;
 
         public AdminWindow(User user)
         {
