@@ -29,6 +29,24 @@ namespace OOPProject.Windows
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
+            if (LoginText.Text == "")
+            {
+                MessageBox.Show("Musisz poać login");
+                return;
+            }
+
+            if (PasswordText.Password == "")
+            {
+                MessageBox.Show("Musisz podać hasło");
+                return;
+            }
+
+            if (NameText.Text == "")
+            {
+                MessageBox.Show("Musisz podać nazwę");
+                return;
+            }
+
             var response = registerModel.RegisterParticipant(LoginText.Text, PasswordText.Password, NameText.Text);
             MessageBox.Show(response.Message);     
         }
