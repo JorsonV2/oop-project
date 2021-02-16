@@ -1,5 +1,6 @@
 ﻿using OOPProject.Db;
 using OOPProject.Models;
+using OOPProject.Windows;
 using System.Windows;
 
 namespace OOPProject
@@ -35,6 +36,12 @@ namespace OOPProject
                         new ParticipantWindow().Show();
                         break;
                 }
+            Close();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            new RegisterWindow().Show();
             Close();
         }
     }
