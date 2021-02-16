@@ -6,7 +6,32 @@
         xmlns:local="clr-namespace:OOPProject"
         mc:Ignorable="d"
         Title="LoginWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Width="400" Height="300">
         
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Login to your account" FontSize="25" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBox x:Name="LoginText" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
+        
+        <Label Grid.Row="2" Grid.Column="0" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="PasswordText" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Height="23" VerticalAlignment="Center" Width="120"/>
+
+        <Button x:Name="LoginButton" Grid.Row="3" Grid.ColumnSpan="2" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="LoginButton_Click"/>
+
+        <Button x:Name="RegisterButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Register as Participant" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+
     </Grid>
 </Window>

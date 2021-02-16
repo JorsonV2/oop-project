@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OOPProject.Db;
+using OOPProject.Models;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OOPProject
 {
@@ -19,11 +9,32 @@ namespace OOPProject
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public Controller controller { get; set; }
-        public LoginWindow(Controller controller)
+        private LoginModel loginModel;
+
+        public LoginWindow()
         {
             InitializeComponent();
-            this.controller = controller;
+            loginModel = new LoginModel();
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            var response = loginModel.ConfirmUser(LoginText.Text, PasswordText.Password);
+            if (response.Error)
+                MessageBox.Show(response.Message);
+            else
+                switch (response.Data[0].Type)
+                {
+                    case UserType.Admin:
+                        new AdminWindow().Show();
+                        break;
+                    case UserType.Leader:
+                        new LeaderWindow().Show();
+                        break;
+                    case UserType.Participant:
+                        new ParticipantWindow().Show();
+                        break;
+                }
         }
     }
 }

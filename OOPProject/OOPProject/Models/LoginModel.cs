@@ -21,12 +21,15 @@ namespace OOPProject.Models
                         );
 
                 if (user.Password == password)
+                {
+                    user.Password = "";
                     return new Response<User>(
                         $"Użytkownik {login} został potwierdzony",
                         false,
                         new List<User>().Append(user).ToList()
                         );
-
+                }
+                    
                 return new Response<User>(
                     "Nieprawidłowe hasło",
                     true
