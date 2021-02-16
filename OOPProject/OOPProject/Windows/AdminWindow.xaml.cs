@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOPProject.Db;
+using OOPProject.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,20 @@ namespace OOPProject
     /// </summary>
     public partial class AdminWindow : Window
     {
-        public AdminWindow()
+        private User user;
+
+        public AdminWindow(User user)
         {
             InitializeComponent();
+            this.user = user;
+
+            UsersDataGrid.ItemsSource = new ActivitiesContext().Users.ToList();
+
+        }
+
+        public void Logout()
+        {
+            throw new NotImplementedException();
         }
     }
 }

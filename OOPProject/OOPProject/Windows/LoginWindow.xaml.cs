@@ -27,7 +27,7 @@ namespace OOPProject
                 switch (response.Data[0].Type)
                 {
                     case UserType.Admin:
-                        new AdminWindow().Show();
+                        new AdminWindow(response.Data[0]).Show();
                         break;
                     case UserType.Leader:
                         new LeaderWindow().Show();
