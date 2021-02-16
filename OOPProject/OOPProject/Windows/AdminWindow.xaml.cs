@@ -1,7 +1,10 @@
 ﻿using OOPProject.Db;
+using OOPProject.Db.Objects;
+using OOPProject.Models;
 using OOPProject.Windows;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,21 +24,51 @@ namespace OOPProject
     /// </summary>
     public partial class AdminWindow : Window
     {
+        private AdminModel adminModel;
         private User user;
-        private ListCollectionView groupedUsers;
 
         public AdminWindow(User user)
         {
             InitializeComponent();
+            adminModel = new AdminModel();
             this.user = user;
-
-            UsersDataGrid.ItemsSource = new ActivitiesContext().Users.ToList();
-
         }
 
-        public void Logout()
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            UsersDataGrid.ItemsSource = adminModel.GetUsers(); 
+            NewUserType.ItemsSource = Enum.GetValues(typeof(UserType)).Cast<UserType>();
+        }
+
+        private void AddNewUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (NewUserLogin.Text == "")
+            {
+                MessageBox.Show("Musisz podać login użytkownika");
+                return;
+            }
+
+            if (NewUserPassword.Text == "")
+            {
+                MessageBox.Show("Musisz podać hasło użytkownika");
+                return;
+            }
+
+            if (NewUserName.Text == "")
+            {
+                MessageBox.Show("Musisz podać nazwę użytkownika");
+                return;
+            }
+
+            if (NewUserType.SelectedItem == null)
+            {
+                MessageBox.Show("Musisz podać typ użytkownika");
+                return;
+            }
+
+            var response = adminModel.CreateUser(NewUserLogin.Text, NewUserPassword.Text, NewUserName.Text, (UserType) NewUserType.SelectedItem);
+
+            MessageBox.Show(response.Message);
         }
     }
 }

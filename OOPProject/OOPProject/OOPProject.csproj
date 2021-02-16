@@ -67,11 +67,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Db\Activitie.cs" />
-    <Compile Include="Db\ActivitieParticipant.cs" />
+    <Compile Include="Db\Objects\Activitie.cs" />
+    <Compile Include="Db\Objects\ActivitieParticipant.cs" />
     <Compile Include="Db\ActivitiesContext.cs" />
-    <Compile Include="Db\ParticipantDescription.cs" />
-    <Compile Include="Db\User.cs" />
+    <Compile Include="Db\Objects\ParticipantDescription.cs" />
+    <Compile Include="Db\Objects\User.cs" />
+    <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\StartModel.cs" />

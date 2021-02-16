@@ -1,4 +1,5 @@
 ﻿using OOPProject.Db;
+using OOPProject.Db.Objects;
 using OOPProject.Models;
 using OOPProject.Windows;
 using System.Windows;
@@ -30,7 +31,7 @@ namespace OOPProject
                         new AdminWindow(response.Data[0]).Show();
                         break;
                     case UserType.Leader:
-                        new LeaderWindow().Show();
+                        new LeaderWindow(response.Data[0]).Show();
                         break;
                     case UserType.Participant:
                         new ParticipantWindow().Show();

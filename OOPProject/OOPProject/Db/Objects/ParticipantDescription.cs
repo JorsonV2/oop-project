@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OOPProject.Db
+namespace OOPProject.Db.Objects
 {
     public class ParticipantDescription
     {

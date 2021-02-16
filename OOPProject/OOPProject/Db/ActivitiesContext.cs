@@ -1,3 +1,4 @@
+using OOPProject.Db.Objects;
 using System.Data.Entity;
 
 namespace OOPProject.Db

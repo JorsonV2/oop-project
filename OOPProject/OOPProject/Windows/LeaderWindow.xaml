@@ -7,6 +7,26 @@
         mc:Ignorable="d"
         Title="LeaderWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Your Activities">
+            <DataGrid x:Name="ActivitiesDataGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Start Date" Binding="{Binding StartDate}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+
+
     </Grid>
 </Window>

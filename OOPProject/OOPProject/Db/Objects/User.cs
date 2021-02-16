@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace OOPProject.Db
+namespace OOPProject.Db.Objects
 {
     public enum UserType
     {

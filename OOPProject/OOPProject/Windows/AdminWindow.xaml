@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:OOPProject"
         xmlns:Db="clr-namespace:OOPProject.Db" x:Class="OOPProject.AdminWindow"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,13 +18,68 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <GroupBox Header="Users">
-            <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
+                        <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Button Content="Delete User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+                    <Button Grid.Row="1" Content="Edit User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+
+
+                </Grid>
+            </Grid>
         </GroupBox>
+        
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Label Grid.ColumnSpan="2" Content="Add new User" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+
+            <Label Grid.Row="1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="NewUserLogin" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="2" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="NewUserPassword" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="3" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1" x:Name="NewUserName" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Label Grid.Row="4" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="4" Grid.Column="1" x:Name="NewUserType" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <Button x:Name="AddNewUserButton" Grid.Row="5" Grid.ColumnSpan="2" Content="Add User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Click="AddNewUserButton_Click"/>
+
+
+        </Grid>
     </Grid>
 </Window>
