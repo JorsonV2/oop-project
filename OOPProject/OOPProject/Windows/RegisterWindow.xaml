@@ -32,8 +32,8 @@
         <Label Grid.Row="3" Grid.Column="0" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="NameText" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="120"/>
 
-        <Button x:Name="RegisterButton" Grid.Row="4" Content="Register as Participant" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
-        <Button x:Name="BackToLoginButton" Grid.Row="4" Grid.Column="1" Content="Back To Login" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
+        <Button x:Name="RegisterButton" Grid.Row="4" Content="Register as Participant" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="RegisterButton_Click"/>
+        <Button x:Name="BackToLoginButton" Grid.Row="4" Grid.Column="1" Content="Back To Login" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="BackToLoginButton_Click"/>
 
     </Grid>
 </Window>
