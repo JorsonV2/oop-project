@@ -94,7 +94,22 @@ namespace OOPProject.Models
 
         public Response<Activitie> DeleteActivitie(Activitie activitie)
         {
-            throw new NotImplementedException();
+            using (var db = new ActivitiesContext())
+            {
+                if (db.Activities.FirstOrDefault() is null)
+                    return new Response<Activitie>(
+                        $"Nie ma takich zajęć w bazie",
+                        true
+                        );
+
+                db.Activities.Remove(activitie);
+                db.SaveChanges();
+
+                return new Response<Activitie>(
+                    $"Zajęcia {activitie.Name} został usunięte",
+                    false
+                    );
+            }
         }
     }
 }
