@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOPProject.Windows"
         mc:Ignorable="d"
-        Title="UserEditWindow" Height="450" Width="800">
-    <Grid>
-        <GroupBox Header="Edit User" BorderThickness="4">
-            <Grid>
+        Title="UserEditWindow" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" SizeToContent="WidthAndHeight">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="Edit User" BorderThickness="4" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -22,20 +22,19 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <Label x:Name="LoginLabel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <Label x:Name="LoginLabel" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="23" Margin="10"/>
 
-                <Label Grid.Row="1" Content="New Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Content="New Password" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <PasswordBox x:Name="PasswordTextBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" Height="23" Margin="10"/>
 
-                <Label Grid.Row="2" Content="New Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="NameTextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Label Grid.Row="2" Content="New Name" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <TextBox x:Name="NameTextBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Height="23" Margin="10"/>
 
-                <Label Grid.Row="3" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                <Label x:Name="TypeLabel" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <Label Grid.Row="3" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" />
+                <Label x:Name="TypeLabel" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Width="120" Height="23" Margin="10"/>
 
-                <Button x:Name="EditUserButton" Grid.Row="4" Content="Edit User" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EditUserButton_Click"/>
-                <Button x:Name="CancelEditButton" Grid.Row="4" Grid.Column="1" Content="Cancel" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="EditUserButton" Grid.Row="4" Grid.ColumnSpan="2" Content="Edit User" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EditUserButton_Click" Margin="10"/>
 
             </Grid>
         </GroupBox>

@@ -2,27 +2,18 @@
 using OOPProject.Db.Objects;
 using OOPProject.Models;
 using OOPProject.Windows;
+using OOPProject.Windows.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace OOPProject
 {
     /// <summary>
     /// Logika interakcji dla klasy AdminWindow.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class AdminWindow : Window, IUserWindow
     {
         private AdminModel adminModel;
         private User user;
@@ -36,7 +27,7 @@ namespace OOPProject
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            UsersDataGrid.ItemsSource = adminModel.GetUsers();
+            ReloadUsersDataGrid();
             ActivitiesDataGrid.ItemsSource = adminModel.GetActivities();
             ActivitiesParticipantsDataGrid.ItemsSource = adminModel.GetActivitiesParticipants();
             NewUserType.ItemsSource = Enum.GetValues(typeof(UserType)).Cast<UserType>();
@@ -99,15 +90,16 @@ namespace OOPProject
             {
                 var response = adminModel.DeleteUser(selectedUser.Login);
                 MessageBox.Show(response.Message);
+                UsersDataGrid.ItemsSource = adminModel.GetUsers();
             }
         }
 
         private void EditUserButton_Click(object sender, RoutedEventArgs e)
         {
-            new UserEditWindow((User)UsersDataGrid.SelectedItem, adminModel).Show();
+            new UserEditWindow((User)UsersDataGrid.SelectedItem, adminModel, this).Show();
         }
 
-        private void ReloadUsersButton_Click(object sender, RoutedEventArgs e)
+        public void ReloadUsersDataGrid()
         {
             UsersDataGrid.ItemsSource = adminModel.GetUsers();
         }

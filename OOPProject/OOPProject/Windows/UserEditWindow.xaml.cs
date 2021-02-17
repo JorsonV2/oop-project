@@ -1,6 +1,7 @@
 ﻿using OOPProject.Db.Objects;
 using OOPProject.Models;
 using OOPProject.Models.Interfaces;
+using OOPProject.Windows.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,16 @@ namespace OOPProject.Windows
     /// </summary>
     public partial class UserEditWindow : Window
     {
+        private IUserWindow window;
         private IUserModel model;
         private User user;
 
-        public UserEditWindow(User user, IUserModel model)
+        public UserEditWindow(User user, IUserModel model, IUserWindow window)
         {
             InitializeComponent();
             this.user = user;
             this.model = model;
+            this.window = window;
             InitializeFields();
         }
 
@@ -58,6 +61,8 @@ namespace OOPProject.Windows
             var response = model.EditUser(user, PasswordTextBox.Password, NameTextBox.Text);
 
             MessageBox.Show(response.Message);
+
+            window.ReloadUsersDataGrid();
         }
     }
 }
