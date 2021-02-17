@@ -4,9 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOPProject"
-        xmlns:Db="clr-namespace:OOPProject.Db" x:Class="OOPProject.AdminWindow"
+        xmlns:Db="clr-namespace:OOPProject.Db" xmlns:Objects="clr-namespace:OOPProject.Db.Objects" x:Class="OOPProject.AdminWindow"
         mc:Ignorable="d"
         Title="AdminWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -17,19 +18,19 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <GroupBox Header="Users">
+        <GroupBox Header="Users" BorderThickness="4">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <DataGrid x:Name="UsersDataGrid" AutoGenerateColumns="False">
+                <DataGrid x:Name="UsersDataGrid" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="UsersDataGrid_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Login" Binding="{Binding Login}"/>
-                        <DataGridTextColumn Header="Password" Binding="{Binding Password}"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                        <DataGridTextColumn Header="Type" Binding="{Binding Type}"/>
+                        <DataGridTextColumn x:Name="loginColumn" Binding="{Binding Login}" Header="Login"/>
+                        <DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Name"/>
+                        <DataGridTextColumn x:Name="passwordColumn" Binding="{Binding Password}" Header="Password"/>
+                        <DataGridTextColumn x:Name="typeColumn" Binding="{Binding Type}" Header="Type"/>
                     </DataGrid.Columns>
                 </DataGrid>
 
@@ -39,47 +40,100 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
 
-                    <Button Content="Delete User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
-                    <Button Grid.Row="1" Content="Edit User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10"/>
-
+                    <Button x:Name="DeleteUserButton" Content="Delete User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" IsEnabled="False" Click="DeleteUserButton_Click"/>
+                    <Button x:Name="EditUserButton" Grid.Row="1" Content="Edit User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" IsEnabled="False"/>
 
                 </Grid>
+                
             </Grid>
         </GroupBox>
-        
-        <Grid Grid.Row="1">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <GroupBox Grid.Row="1" Header="Add New User" BorderThickness="4">
+            <Grid>
 
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            
-            <Label Grid.ColumnSpan="2" Content="Add new User" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="1" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="NewUserLogin" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-            <Label Grid.Row="2" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="NewUserPassword" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-            <Label Grid.Row="3" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <TextBox Grid.Row="3" Grid.Column="1" x:Name="NewUserName" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-            <Label Grid.Row="4" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <ComboBox Grid.Row="4" Grid.Column="1" x:Name="NewUserType" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-
-            <Button x:Name="AddNewUserButton" Grid.Row="5" Grid.ColumnSpan="2" Content="Add User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Click="AddNewUserButton_Click"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
 
-        </Grid>
+
+                <Label Content="Login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" x:Name="NewUserLogin" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Content="Password" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="NewUserPassword" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="1" x:Name="NewUserName" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="3" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <ComboBox Grid.Row="3" Grid.Column="1" x:Name="NewUserType" Height="23" Width="120" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+                <Button x:Name="AddNewUserButton" Grid.Row="5" Grid.ColumnSpan="2" Content="Add User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Click="AddNewUserButton_Click"/>
+
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Header="Activities" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <DataGrid x:Name="ActivitiesDataGrid" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="activitieIdColumn" Binding="{Binding ActivitieId}" Header="Activitie Id"/>
+                        <DataGridTextColumn x:Name="durationColumn" Binding="{Binding Duration}" Header="Duration"/>
+                        <DataGridTextColumn x:Name="leaderLoginColumn" Binding="{Binding LeaderLogin}" Header="Leader Login"/>
+                        <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name"/>
+                        <DataGridTextColumn x:Name="participantsNumberColumn" Binding="{Binding ParticipantsNumber}" Header="Participants Number"/>
+                        <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Activities Participants" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <DataGrid x:Name="ActivitiesParticipantsDataGrid" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="activitieIdColumn1" Binding="{Binding ActivitieId}" Header="Activitie Id" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
+                        <DataGridTextColumn x:Name="participantLoginColumn" Binding="{Binding ParticipantLogin}" Header="Participant Login" Width="SizeToHeader"/>
+                        <DataGridTemplateColumn x:Name="signUpDateColumn" Header="Sign Up Date" Width="SizeToHeader">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding SignUpDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

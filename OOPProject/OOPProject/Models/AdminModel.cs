@@ -49,5 +49,36 @@ namespace OOPProject.Models
             db.Users.Load();
             return db.Users.Local;
         }
+
+        public ObservableCollection<Activitie> GetActivities()
+        {
+            db.Activities.Load();
+            return db.Activities.Local;
+        }
+
+        public ObservableCollection<ActivitieParticipant> GetActivitiesParticipants()
+        {
+            db.ActivitiesParticipants.Load();
+            return db.ActivitiesParticipants.Local;
+        }
+
+        public Response<User> DeleteUser(string login)
+        {
+            var user = db.Users.Find(login);
+
+            if (user is null)
+                return new Response<User>(
+                    $"Nie ma takiego użytkownika jak {login}",
+                    true
+                    );
+
+            db.Users.Remove(user);
+            db.SaveChanges();
+
+            return new Response<User>(
+                $"Użytkownik {login} został usunięty",
+                false
+                );
+        }
     }
 }

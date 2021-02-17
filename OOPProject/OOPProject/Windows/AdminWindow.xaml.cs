@@ -36,7 +36,9 @@ namespace OOPProject
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            UsersDataGrid.ItemsSource = adminModel.GetUsers(); 
+            UsersDataGrid.ItemsSource = adminModel.GetUsers();
+            ActivitiesDataGrid.ItemsSource = adminModel.GetActivities();
+            ActivitiesParticipantsDataGrid.ItemsSource = adminModel.GetActivitiesParticipants();
             NewUserType.ItemsSource = Enum.GetValues(typeof(UserType)).Cast<UserType>();
         }
 
@@ -70,5 +72,16 @@ namespace OOPProject
 
             MessageBox.Show(response.Message);
         }
+
+        private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dg = (DataGrid)sender;
+            if (dg.SelectedItem == null)
+                ChangeUsersButtonsEnable();
+            else if (!DeleteUserButton.IsEnabled)
+                ChangeUsersButtonsEnable();
+
+        }
+
     }
 }
