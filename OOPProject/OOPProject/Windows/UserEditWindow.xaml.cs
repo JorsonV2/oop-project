@@ -29,6 +29,15 @@ namespace OOPProject.Windows
             InitializeComponent();
             this.user = user;
             this.model = model;
+            InitializeFields();
+        }
+
+        private void InitializeFields()
+        {
+            LoginLabel.Content = user.Login;
+            PasswordTextBox.Password = user.Password;
+            NameTextBox.Text = user.Name;
+            TypeLabel.Content = user.Type;
         }
     }
 }
