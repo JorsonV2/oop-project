@@ -83,5 +83,23 @@ namespace OOPProject
 
         }
 
+        private void ChangeUsersButtonsEnable()
+        {
+            DeleteUserButton.IsEnabled = !DeleteUserButton.IsEnabled;
+            EditUserButton.IsEnabled = !EditUserButton.IsEnabled;
+        }
+
+        private void DeleteUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedUser = (User)UsersDataGrid.SelectedItem;
+
+            var result = MessageBox.Show($"Czy napewno chcesz usunąc użytkownika {selectedUser.Login}?", "Are you siure?", MessageBoxButton.YesNo);
+            
+            if(result == MessageBoxResult.Yes)
+            {
+                var response = adminModel.DeleteUser(selectedUser.Login);
+                MessageBox.Show(response.Message);
+            }
+        }
     }
 }
