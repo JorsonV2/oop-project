@@ -1,5 +1,6 @@
 ﻿using OOPProject.Db;
 using OOPProject.Db.Objects;
+using OOPProject.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace OOPProject.Models
 {
-    public class AdminModel
+    public class AdminModel : IUserModel
     {
         private ActivitiesContext db;
 
@@ -79,6 +80,11 @@ namespace OOPProject.Models
                 $"Użytkownik {login} został usunięty",
                 false
                 );
+        }
+
+        public Response<User> EditUser()
+        {
+            throw new NotImplementedException();
         }
     }
 }
