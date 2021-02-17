@@ -1,6 +1,5 @@
 ﻿using OOPProject.Db.Objects;
 using OOPProject.Models;
-using OOPProject.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +21,10 @@ namespace OOPProject.Windows
     /// </summary>
     public partial class UserEditWindow : Window
     {
-        private UserModel model;
+        private IUserModel model;
         private User user;
 
-        public UserEditWindow(User user, UserModel model)
+        public UserEditWindow(User user, IUserModel model)
         {
             InitializeComponent();
             this.user = user;
@@ -39,6 +38,25 @@ namespace OOPProject.Windows
             PasswordTextBox.Password = user.Password;
             NameTextBox.Text = user.Name;
             TypeLabel.Content = user.Type;
+        }
+
+        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (PasswordTextBox.Password == "")
+            {
+                MessageBox.Show("Musisz podać hasło użytkownika");
+                return;
+            }
+
+            if (NameTextBox.Text == "")
+            {
+                MessageBox.Show("Muszisz podać nazwę użytkownika");
+                return;
+            }
+
+            var response = model.EditUser(user, PasswordTextBox.Password, NameTextBox.Text);
+
+            MessageBox.Show(response.Message);
         }
     }
 }

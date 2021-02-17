@@ -73,10 +73,5 @@ namespace OOPProject.Models
                 false
                 );
         }
-
-        public Response<User> EditUser()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

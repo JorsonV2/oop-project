@@ -101,5 +101,10 @@ namespace OOPProject
                 MessageBox.Show(response.Message);
             }
         }
+
+        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            new UserEditWindow((User)UsersDataGrid.SelectedItem, adminModel).Show();
+        }
     }
 }

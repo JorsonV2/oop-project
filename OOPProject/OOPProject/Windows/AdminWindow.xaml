@@ -41,7 +41,7 @@
                     </Grid.RowDefinitions>
 
                     <Button x:Name="DeleteUserButton" Content="Delete User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" IsEnabled="False" Click="DeleteUserButton_Click"/>
-                    <Button x:Name="EditUserButton" Grid.Row="1" Content="Edit User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" IsEnabled="False"/>
+                    <Button x:Name="EditUserButton" Grid.Row="1" Content="Edit User" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" IsEnabled="False" Click="EditUserButton_Click"/>
 
                 </Grid>
                 

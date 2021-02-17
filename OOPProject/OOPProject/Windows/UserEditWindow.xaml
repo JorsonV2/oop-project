@@ -34,7 +34,7 @@
                 <Label Grid.Row="3" Content="Type" HorizontalAlignment="Center" VerticalAlignment="Center" />
                 <Label x:Name="TypeLabel" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                <Button x:Name="EditUserButton" Grid.Row="4" Content="Edit User" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Button x:Name="EditUserButton" Grid.Row="4" Content="Edit User" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="EditUserButton_Click"/>
                 <Button x:Name="CancelEditButton" Grid.Row="4" Grid.Column="1" Content="Cancel" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             </Grid>

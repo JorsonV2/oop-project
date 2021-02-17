@@ -23,7 +23,6 @@ namespace OOPProject.Models
 
                 if (user.Password == password)
                 {
-                    user.Password = "";
                     return new Response<User>(
                         $"Użytkownik {login} został potwierdzony",
                         false,
