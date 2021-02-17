@@ -88,11 +88,15 @@
     <Compile Include="Db\Objects\ParticipantDescription.cs" />
     <Compile Include="Db\Objects\User.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\Interfaces\IActivitieModel.cs" />
     <Compile Include="Models\Interfaces\IUserModel.cs" />
     <Compile Include="Models\LeaderModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\StartModel.cs" />
+    <Compile Include="Windows\ActivitieEditWindow.xaml.cs">
+      <DependentUpon>ActivitieEditWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +104,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Windows\Interfaces\IActivitieWindow.cs" />
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
@@ -148,6 +153,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Windows\ActivitieEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

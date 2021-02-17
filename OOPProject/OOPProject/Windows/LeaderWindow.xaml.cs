@@ -1,9 +1,11 @@
 ﻿using OOPProject.Db.Objects;
 using OOPProject.Models;
+using OOPProject.Windows;
 using OOPProject.Windows.Interfaces;
 using System;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace OOPProject
 {
@@ -82,11 +84,50 @@ namespace OOPProject
                 }
                 MessageBox.Show(sb.ToString());
             }
+            else
+                MessageBox.Show(response.Message);
+
+            ReloadActivitieDataGrid();
         }
 
         public void ReloadActivitieDataGrid()
         {
             ActivitiesDataGrid.ItemsSource = leaderModel.GetActivities(user);
         }
+
+        private void DeleteActivitieButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedActivitie = (Activitie)ActivitiesDataGrid.SelectedItem;
+
+            var result = MessageBox.Show($"Czy napewno chcesz usunąc zajęcia {selectedActivitie.Name}?", "Are you siure?", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                var response = leaderModel.DeleteActivitie(selectedActivitie);
+                MessageBox.Show(response.Message);
+                ReloadActivitieDataGrid();
+            }
+        }
+
+        private void EditActivitieButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ActivitieEditWindow((Activitie)ActivitiesDataGrid.SelectedItem, leaderModel, this).Show();
+        }
+
+        private void ActivitiesDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            DataGrid dg = (DataGrid)sender;
+            if (dg.SelectedItem == null)
+                ChangeActivitieButtonsEnable();
+            else if (!DeleteActivitieButton.IsEnabled)
+                ChangeActivitieButtonsEnable();
+        }
+
+        private void ChangeActivitieButtonsEnable()
+        {
+            DeleteActivitieButton.IsEnabled = !DeleteActivitieButton.IsEnabled;
+            EditActivitieButton.IsEnabled = !EditActivitieButton.IsEnabled;
+        }
+
     }
 }

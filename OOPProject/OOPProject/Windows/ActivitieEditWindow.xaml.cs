@@ -88,10 +88,22 @@ namespace OOPProject.Windows
 
             var response = model.EditActivitie(activitie, name, (DateTime)startDate, (DateTime)endDate, (int)participantsNumber);
 
-            MessageBox.Show(response.Message);
+            if (response.Error)
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine(response.Message);
+                foreach (var item in response.Data)
+                {
+                    sb.AppendLine($"{item.Name}: od {item.StartDate} do {item.EndDate}");
+                }
+                MessageBox.Show(sb.ToString());
+            }
 
-            if (!response.Error)
+            else
+            {
+                MessageBox.Show(response.Message);
                 window.ReloadActivitieDataGrid();
+            }   
         }
     }
 }

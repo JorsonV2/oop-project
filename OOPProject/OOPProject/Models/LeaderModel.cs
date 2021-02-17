@@ -62,9 +62,9 @@ namespace OOPProject.Models
         {
             using (var db = new ActivitiesContext())
             {
+
                 var activitiesOverlaping = db.Activities
-                    .Where(a => a.LeaderLogin == activitie.User.Login)
-                    .Where(a => !(a.StartDate > endDate || a.EndDate < startDate));
+                    .Where(a => !(a.StartDate > endDate || a.EndDate < startDate) && a.ActivitieId != activitie.ActivitieId);
 
                 if (activitiesOverlaping.Count() > 0)
                     return new Response<Activitie>(
@@ -73,7 +73,7 @@ namespace OOPProject.Models
                         activitiesOverlaping.ToList()
                         );
 
-                var editedActivitie = db.Activities.Find(activitie);
+                var editedActivitie = db.Activities.Find(activitie.ActivitieId);
 
                 editedActivitie.Name = name;
                 editedActivitie.StartDate = startDate;
@@ -96,13 +96,14 @@ namespace OOPProject.Models
         {
             using (var db = new ActivitiesContext())
             {
-                if (db.Activities.FirstOrDefault() is null)
+                var found = db.Activities.Find(activitie.ActivitieId);
+                if (found is null)
                     return new Response<Activitie>(
                         $"Nie ma takich zajęć w bazie",
                         true
                         );
 
-                db.Activities.Remove(activitie);
+                db.Activities.Remove(found);
                 db.SaveChanges();
 
                 return new Response<Activitie>(
