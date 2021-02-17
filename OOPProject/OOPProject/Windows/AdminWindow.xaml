@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OOPProject"
         xmlns:Db="clr-namespace:OOPProject.Db" xmlns:Objects="clr-namespace:OOPProject.Db.Objects" x:Class="OOPProject.AdminWindow"
         mc:Ignorable="d"
@@ -100,14 +101,14 @@
                         <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                                    <xctk:DateTimeUpDown Value="{Binding StartDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding EndDate}"/>
+                                    <xctk:DateTimeUpDown Value="{Binding EndDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -126,13 +127,13 @@
                 
                 <DataGrid x:Name="ActivitiesParticipantsDataGrid" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="activitieIdColumn1" Binding="{Binding ActivitieId}" Header="Activitie Id" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id" Width="SizeToHeader"/>
-                        <DataGridTextColumn x:Name="participantLoginColumn" Binding="{Binding ParticipantLogin}" Header="Participant Login" Width="SizeToHeader"/>
-                        <DataGridTemplateColumn x:Name="signUpDateColumn" Header="Sign Up Date" Width="SizeToHeader">
+                        <DataGridTextColumn x:Name="activitieIdColumn1" Binding="{Binding ActivitieId}" Header="Activitie Id"/>
+                        <DataGridTextColumn x:Name="idColumn" Binding="{Binding Id}" Header="Id"/>
+                        <DataGridTextColumn x:Name="participantLoginColumn" Binding="{Binding ParticipantLogin}" Header="Participant Login"/>
+                        <DataGridTemplateColumn x:Name="signUpDateColumn" Header="Sign Up Date">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding SignUpDate}"/>
+                                    <xctk:DateTimeUpDown Value="{Binding SignUpDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

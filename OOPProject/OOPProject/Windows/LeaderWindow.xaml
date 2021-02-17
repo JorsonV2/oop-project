@@ -19,7 +19,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Your Activities" BorderThickness="4">
+        <GroupBox Grid.ColumnSpan="2" Header="Your Activities" BorderThickness="4">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
@@ -30,8 +30,6 @@
 
                 <DataGrid x:Name="ActivitiesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <DataGrid.Columns>
-                        <DataGridTextColumn x:Name="activitieIdColumn" Header="Activitie Id" Binding="{Binding ActivitieId}"/>
-                        <DataGridTextColumn x:Name="leaderLoginColumn" Header="Leader Login" Binding="{Binding LeaderLogin}"/>
                         <DataGridTextColumn x:Name="nameColumn" Header="Name" Binding="{Binding Name}"/>
                         <DataGridTextColumn x:Name="participantsNumberColumn" Header="Participants Number" Binding="{Binding ParticipantsNumber}"/>
                         <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date">
@@ -44,7 +42,7 @@
                         <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <DatePicker SelectedDate="{Binding EndDate}"/>
+                                    <xctk:DateTimePicker Value="{Binding EndDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -71,21 +69,25 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Label Content="Name"/>
-                <TextBox Grid.Column="1" x:Name="NewActivitieNameTextBox" Height="23" Width="120"/>
+                <Label Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" x:Name="NewActivitieNameTextBox" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <Label Grid.Row="1" Content="Start Date"/>
-                <DatePicker Grid.Row="1" Grid.Column="1" x:Name="NewActivitieStartDate" Height="23" Width="120"/>
+                <Label Grid.Row="1" Content="Start Date" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <xctk:DateTimePicker Grid.Row="1" Grid.Column="1" x:Name="NewActivitieStartDate" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <Label Grid.Row="2" Content="End Date"/>
-                <DatePicker Grid.Row="2" Grid.Column="1" x:Name="NewActivitieEndDate" Height="23" Width="120"/>
+                <Label Grid.Row="2" Content="End Date" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <xctk:DateTimePicker Grid.Row="2" Grid.Column="1" x:Name="NewActivitieEndDate" Height="23" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-                <Label Grid.Row="3" Content="Participants Number"/>
-                <xctk:IntegerUpDown Grid.Row="3" Grid.Column="1" x:Name="NewActivitieParticipantsNumber"/>
+                <Label Grid.Row="3" Content="Participants Number" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <xctk:IntegerUpDown Grid.Row="3" Grid.Column="1" x:Name="NewActivitieParticipantsNumber" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-
+                <Button Grid.Row="4" Grid.ColumnSpan="2" x:Name="AddActivitieButton" Content="Add Activitie" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="AddActivitieButton_Click"/>
 
             </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Your Controlls" BorderThickness="4">
+            
         </GroupBox>
 
 

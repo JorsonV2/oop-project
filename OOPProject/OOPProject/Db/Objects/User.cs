@@ -5,9 +5,9 @@ namespace OOPProject.Db.Objects
 {
     public enum UserType
     {
-        Admin,
-        Leader,
-        Participant
+        Admin = 0,
+        Leader = 1,
+        Participant = 2
     }
 
     public class User

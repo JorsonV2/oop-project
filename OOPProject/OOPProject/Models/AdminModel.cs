@@ -35,7 +35,7 @@ namespace OOPProject.Models
                 Login = login,
                 Password = password,
                 Name = name,
-                Type = UserType.Participant
+                Type = userType
             });
             db.SaveChanges();
 
