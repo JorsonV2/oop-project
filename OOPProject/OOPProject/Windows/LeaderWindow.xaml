@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OOPProject"
         xmlns:Objects="clr-namespace:OOPProject.Db.Objects" x:Class="OOPProject.LeaderWindow"
         mc:Ignorable="d"
@@ -30,7 +31,6 @@
                 <DataGrid x:Name="ActivitiesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" EnableRowVirtualization="True" CanUserAddRows="False" CanUserDeleteRows="False" SelectionMode="Single" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="activitieIdColumn" Header="Activitie Id" Binding="{Binding ActivitieId}"/>
-                        <DataGridTextColumn x:Name="durationColumn" Header="Duration" Binding="{Binding Duration}"/>
                         <DataGridTextColumn x:Name="leaderLoginColumn" Header="Leader Login" Binding="{Binding LeaderLogin}"/>
                         <DataGridTextColumn x:Name="nameColumn" Header="Name" Binding="{Binding Name}"/>
                         <DataGridTextColumn x:Name="participantsNumberColumn" Header="Participants Number" Binding="{Binding ParticipantsNumber}"/>
@@ -38,6 +38,13 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding EndDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -70,8 +77,13 @@
                 <Label Grid.Row="1" Content="Start Date"/>
                 <DatePicker Grid.Row="1" Grid.Column="1" x:Name="NewActivitieStartDate" Height="23" Width="120"/>
 
-                <Label Grid.Row="2" Content="Duration"/>
+                <Label Grid.Row="2" Content="End Date"/>
                 <DatePicker Grid.Row="2" Grid.Column="1" x:Name="NewActivitieEndDate" Height="23" Width="120"/>
+
+                <Label Grid.Row="3" Content="Participants Number"/>
+                <xctk:IntegerUpDown Grid.Row="3" Grid.Column="1" x:Name="NewActivitieParticipantsNumber"/>
+
+
 
             </Grid>
         </GroupBox>

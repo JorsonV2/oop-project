@@ -94,7 +94,6 @@
                 <DataGrid x:Name="ActivitiesDataGrid" SelectionMode="Single" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" RowDetailsVisibilityMode="VisibleWhenSelected" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <DataGrid.Columns>
                         <DataGridTextColumn x:Name="activitieIdColumn" Binding="{Binding ActivitieId}" Header="Activitie Id"/>
-                        <DataGridTextColumn x:Name="durationColumn" Binding="{Binding Duration}" Header="Duration"/>
                         <DataGridTextColumn x:Name="leaderLoginColumn" Binding="{Binding LeaderLogin}" Header="Leader Login"/>
                         <DataGridTextColumn x:Name="nameColumn1" Binding="{Binding Name}" Header="Name"/>
                         <DataGridTextColumn x:Name="participantsNumberColumn" Binding="{Binding ParticipantsNumber}" Header="Participants Number"/>
@@ -102,6 +101,13 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding EndDate}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
