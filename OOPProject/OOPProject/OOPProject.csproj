@@ -73,11 +73,11 @@
     <Compile Include="Db\Objects\ParticipantDescription.cs" />
     <Compile Include="Db\Objects\User.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\Interfaces\IUserModel.cs" />
     <Compile Include="Models\LeaderModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\StartModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
