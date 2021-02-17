@@ -3,10 +3,41 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OOPProject.Windows"
         mc:Ignorable="d"
-        Title="ActivitieEditWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="ActivitieEditWindow" VerticalAlignment="Center" HorizontalAlignment="Center" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="Edit Activitie" BorderThickness="4" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Name" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <TextBox Grid.Column="1" x:Name="NameTextBox" Height="23" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
+
+                <Label Grid.Row="1" Content="Start Date" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <tk:DateTimeUpDown Grid.Row="1" Grid.Column="1" x:Name="StartDateTime" Height="23" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
+
+                <Label Grid.Row="2" Content="End Date" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <tk:DateTimeUpDown Grid.Row="2" Grid.Column="1" x:Name="EndDateTime" Height="23" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
+
+                <Label Grid.Row="3" Content="Participants Number" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <tk:IntegerUpDown Grid.Row="3" Grid.Column="1" x:Name="ParticipantsNumberUpDown" Height="23" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
+
+                <Button Grid.Row="4" Grid.ColumnSpan="2" Padding="4" x:Name="EditButton" Content="Edit Activitie" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

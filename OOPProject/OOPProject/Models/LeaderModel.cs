@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace OOPProject.Models
 {
-    public class LeaderModel : IUserModel
+    public class LeaderModel : IUserModel, IActivitieModel
     {
 
         public Response<User> EditUser(User user, string password, string name)
@@ -56,6 +56,16 @@ namespace OOPProject.Models
                 db.Activities.Where(a => a.LeaderLogin == user.Login).Load();
                 return db.Activities.Local;
             }
+        }
+
+        public Response<Activitie> EditActivitie(User user, string name, DateTime startDate, DateTime endDate, int participantsNumber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Response<Activitie> DeleteActivitie(Activitie activitie)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOPProject.Db.Objects;
+using OOPProject.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,28 @@ namespace OOPProject.Windows
     /// </summary>
     public partial class ActivitieEditWindow : Window
     {
-        public ActivitieEditWindow()
+        private IActivitieModel model;
+        private Activitie activitie;
+
+        public ActivitieEditWindow(Activitie activitie, IActivitieModel model)
         {
             InitializeComponent();
+            this.model = model;
+            this.activitie = activitie;
+            InitializeFields();
+        }
+
+        private void InitializeFields()
+        {
+            NameTextBox.Text = activitie.Name;
+            StartDateTime.Value = activitie.StartDate;
+            EndDateTime.Value = activitie.EndDate;
+            ParticipantsNumberUpDown.Value = activitie.ParticipantsNumber;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
