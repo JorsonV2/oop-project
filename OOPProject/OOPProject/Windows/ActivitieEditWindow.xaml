@@ -35,7 +35,7 @@
                 <Label Grid.Row="3" Content="Participants Number" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
                 <tk:IntegerUpDown Grid.Row="3" Grid.Column="1" x:Name="ParticipantsNumberUpDown" Height="23" Width="120" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
 
-                <Button Grid.Row="4" Grid.ColumnSpan="2" Padding="4" x:Name="EditButton" Content="Edit Activitie" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10"/>
+                <Button Grid.Row="4" Grid.ColumnSpan="2" Padding="4" x:Name="EditButton" Content="Edit Activitie" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Click="EditButton_Click"/>
 
             </Grid>
         </GroupBox>

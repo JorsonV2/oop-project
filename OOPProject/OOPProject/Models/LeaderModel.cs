@@ -43,7 +43,7 @@ namespace OOPProject.Models
                 db.SaveChanges();
 
                 return new Response<Activitie>(
-                    $"Usało się zmieścić w grafiku twoje nowe zajęcia",
+                    $"Udało się zmieścić w grafiku twoje nowe zajęcia",
                     false
                     );
             }
@@ -58,9 +58,38 @@ namespace OOPProject.Models
             }
         }
 
-        public Response<Activitie> EditActivitie(User user, string name, DateTime startDate, DateTime endDate, int participantsNumber)
+        public Response<Activitie> EditActivitie(Activitie activitie, string name, DateTime startDate, DateTime endDate, int participantsNumber)
         {
-            throw new NotImplementedException();
+            using (var db = new ActivitiesContext())
+            {
+                var activitiesOverlaping = db.Activities
+                    .Where(a => a.LeaderLogin == activitie.User.Login)
+                    .Where(a => !(a.StartDate > endDate || a.EndDate < startDate));
+
+                if (activitiesOverlaping.Count() > 0)
+                    return new Response<Activitie>(
+                        $"Posiadasz {activitiesOverlaping.Count()} inne zajęcia w tym terminie",
+                        true,
+                        activitiesOverlaping.ToList()
+                        );
+
+                var editedActivitie = db.Activities.Find(activitie);
+
+                editedActivitie.Name = name;
+                editedActivitie.StartDate = startDate;
+                editedActivitie.EndDate = endDate;
+                editedActivitie.ParticipantsNumber = participantsNumber;
+
+                db.Activities.Add(editedActivitie);
+                db.Entry(editedActivitie).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return new Response<Activitie>(
+                    $"Zajęcia zostały zaktualizowane",
+                    false
+                    );
+            }
         }
 
         public Response<Activitie> DeleteActivitie(Activitie activitie)

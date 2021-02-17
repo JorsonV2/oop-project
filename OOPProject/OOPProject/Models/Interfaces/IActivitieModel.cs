@@ -9,7 +9,7 @@ namespace OOPProject.Models.Interfaces
 {
     public interface IActivitieModel
     {
-        Response<Activitie> EditActivitie(User user, string name, DateTime startDate, DateTime endDate, int participantsNumber);
+        Response<Activitie> EditActivitie(Activitie activitie, string name, DateTime startDate, DateTime endDate, int participantsNumber);
         Response<Activitie> DeleteActivitie(Activitie activitie);
         Response<Activitie> CreateActivitie(User user, string name, DateTime startDate, DateTime endDate, int participantsNumber);
     }
