@@ -1,5 +1,6 @@
 ﻿using OOPProject.Db;
 using OOPProject.Db.Objects;
+using OOPProject.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,8 +11,15 @@ using System.Threading.Tasks;
 
 namespace OOPProject.Models
 {
-    public class AdminModel : UserModel
+    public class AdminModel : IUserModel
     {
+        private ActivitiesContext db;
+
+        public AdminModel()
+        {
+            db = new ActivitiesContext();
+        }
+
         public Response<User> CreateUser(string login, string password, string name, UserType userType)
         {
 
@@ -70,6 +78,27 @@ namespace OOPProject.Models
 
             return new Response<User>(
                 $"Użytkownik {login} został usunięty",
+                false
+                );
+        }
+
+        public Response<User> EditUser(User user, string password, string name)
+        {
+            var editedUser = db.Users.Find(user.Login);
+
+            if (editedUser is null)
+                return new Response<User>(
+                    $"Użutkownik {user.Login} nie istnieje w bazie",
+                    true
+                    );
+
+            editedUser.Password = password;
+            editedUser.Name = name;
+
+            db.SaveChanges();
+
+            return new Response<User>(
+                $"Użytkownik {user.Login} został zedytowany",
                 false
                 );
         }
