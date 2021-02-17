@@ -17,5 +17,13 @@ namespace OOPProject
         {
             new LoginWindow().Show();
         }
+
+        public void Logout()
+        {
+            new LoginWindow().Show();
+            for (int i = 0; i < Current.Windows.Count; i++)
+                if (!Current.Windows[i].GetType().IsInstanceOfType((typeof(LoginWindow))))
+                    Current.Windows[i].Close();      
+        }
     }
 }

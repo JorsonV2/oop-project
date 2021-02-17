@@ -129,5 +129,9 @@ namespace OOPProject
             EditActivitieButton.IsEnabled = !EditActivitieButton.IsEnabled;
         }
 
+        private void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).Logout();
+        }
     }
 }

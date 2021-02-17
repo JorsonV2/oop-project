@@ -97,6 +97,7 @@
         </GroupBox>
 
         <GroupBox Grid.Row="1" Grid.Column="1" Header="Your Controlls" BorderThickness="4">
+            <Button x:Name="LogoutButton" Content="Logout" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="LogoutButton_Click"/>
         </GroupBox>
 
 
