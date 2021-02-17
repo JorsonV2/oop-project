@@ -1,6 +1,5 @@
 ﻿using OOPProject.Db;
 using OOPProject.Db.Objects;
-using OOPProject.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,15 +10,8 @@ using System.Threading.Tasks;
 
 namespace OOPProject.Models
 {
-    public class AdminModel : IUserModel
+    public class AdminModel : UserModel
     {
-        private ActivitiesContext db;
-
-        public AdminModel()
-        {
-            db = new ActivitiesContext();
-        }
-
         public Response<User> CreateUser(string login, string password, string name, UserType userType)
         {
 

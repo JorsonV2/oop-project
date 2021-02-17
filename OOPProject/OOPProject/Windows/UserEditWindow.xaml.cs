@@ -1,4 +1,5 @@
 ﻿using OOPProject.Db.Objects;
+using OOPProject.Models;
 using OOPProject.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,10 @@ namespace OOPProject.Windows
     /// </summary>
     public partial class UserEditWindow : Window
     {
-        IUserModel model;
-        User user;
+        private UserModel model;
+        private User user;
 
-        public UserEditWindow(User user, IUserModel model)
+        public UserEditWindow(User user, UserModel model)
         {
             InitializeComponent();
             this.user = user;
