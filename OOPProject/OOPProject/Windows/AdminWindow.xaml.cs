@@ -106,5 +106,10 @@ namespace OOPProject
         {
             new UserEditWindow((User)UsersDataGrid.SelectedItem, adminModel).Show();
         }
+
+        private void ReloadUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            UsersDataGrid.ItemsSource = adminModel.GetUsers();
+        }
     }
 }
