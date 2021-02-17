@@ -73,10 +73,11 @@
     <Compile Include="Db\Objects\ParticipantDescription.cs" />
     <Compile Include="Db\Objects\User.cs" />
     <Compile Include="Models\AdminModel.cs" />
+    <Compile Include="Models\LeaderModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\StartModel.cs" />
-    <Compile Include="Models\IUserModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Windows\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -119,10 +120,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\OOPProject.Db.Objects.Activitie.datasource" />
-    <None Include="Properties\DataSources\OOPProject.Db.Objects.ActivitieParticipant.datasource" />
-    <None Include="Properties\DataSources\OOPProject.Db.Objects.ParticipantDescription.datasource" />
-    <None Include="Properties\DataSources\OOPProject.Db.Objects.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -157,7 +154,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

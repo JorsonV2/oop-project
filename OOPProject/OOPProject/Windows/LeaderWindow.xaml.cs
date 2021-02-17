@@ -1,5 +1,6 @@
 ﻿using OOPProject.Db;
 using OOPProject.Db.Objects;
+using OOPProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,18 @@ namespace OOPProject
     /// </summary>
     public partial class LeaderWindow : Window
     {
+        private LeaderModel leaderModel;
         private User user;
         public LeaderWindow(User user)
         {
             InitializeComponent();
             this.user = user;
+            leaderModel = new LeaderModel();
+        }
 
-            ActivitiesDataGrid.ItemsSource = new ActivitiesContext().Users.Find(user.Login).Activities;
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            ActivitiesDataGrid.ItemsSource = leaderModel.GetActivities();
         }
     }
 }
