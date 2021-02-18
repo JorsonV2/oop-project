@@ -1,5 +1,6 @@
 ﻿using OOPProject.Db.Objects;
 using OOPProject.Models;
+using OOPProject.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -68,9 +69,16 @@ namespace OOPProject
         private void SignedInActivitiesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((DataGrid)sender).SelectedItem is null)
+            {
                 SignOutFromSingedInButton.IsEnabled = false;
+                
+            }
             else
+            {
                 SignOutFromSingedInButton.IsEnabled = true;
+                DetailsButton.IsEnabled = true;
+            }
+                
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
@@ -83,6 +91,16 @@ namespace OOPProject
         private void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
             ((App)Application.Current).Logout();
+        }
+
+        private void DetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            new ParticipantActivitieDetails((Activitie)SignedInActivitiesDataGrid.SelectedItem, user).Show();
+        }
+
+        private void SignOutFromSingedInButton_Click(object sender, RoutedEventArgs e)
+        {
+            participantModel.SignOut((Activitie)SignedInActivitiesDataGrid.SelectedItem, user);
         }
     }
 }

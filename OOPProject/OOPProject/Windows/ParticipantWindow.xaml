@@ -85,9 +85,18 @@
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Button Grid.Column="1" x:Name="SignOutFromSingedInButton" Content="Sign Out" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+                    <Button x:Name="SignOutFromSingedInButton" Content="Sign Out" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="SignOutFromSingedInButton_Click"/>
 
+                    <Button Grid.Row="1" x:Name="DetailsButton" Content="See Details" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="DetailsButton_Click"/>
+                </Grid>
+                
+                
             </Grid>
         </GroupBox>
 

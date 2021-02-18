@@ -116,6 +116,9 @@
     </Compile>
     <Compile Include="Windows\Interfaces\IActivitieWindow.cs" />
     <Compile Include="Windows\Interfaces\IUserWindow.cs" />
+    <Compile Include="Windows\ParticipantActivitieDetails.xaml.cs">
+      <DependentUpon>ParticipantActivitieDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ParticipantActivitieDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
