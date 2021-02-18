@@ -34,13 +34,13 @@ namespace OOPProject.Windows
         {
             using (var db = new ActivitiesContext())
             {
-                userDataGrid.ItemsSource = db.ActivitiesParticipants.Where(ap => ap.ActivitieId == activitie.ActivitieId);
+                userDataGrid.ItemsSource = db.ActivitiesParticipants.Where(ap => ap.ActivitieId == activitie.ActivitieId).ToList();
             }
         }
 
         private void UserDetailsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            new UserDetailsWindow(user, (User)userDataGrid.SelectedItem).Show();
         }
 
         private void userDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

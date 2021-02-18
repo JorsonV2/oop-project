@@ -116,11 +116,17 @@
     </Compile>
     <Compile Include="Windows\Interfaces\IActivitieWindow.cs" />
     <Compile Include="Windows\Interfaces\IUserWindow.cs" />
+    <Compile Include="Windows\LeaderActivitieDetailsWindow.xaml.cs">
+      <DependentUpon>LeaderActivitieDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\ParticipantActivitieDetails.xaml.cs">
       <DependentUpon>ParticipantActivitieDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\RegisterWindow.xaml.cs">
       <DependentUpon>RegisterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\UserDetailsWindow.xaml.cs">
+      <DependentUpon>UserDetailsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\UserEditWindow.xaml.cs">
       <DependentUpon>UserEditWindow.xaml</DependentUpon>
@@ -181,6 +187,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\LeaderActivitieDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\LeaderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -198,6 +208,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\RegisterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\UserDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

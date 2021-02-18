@@ -133,5 +133,10 @@ namespace OOPProject
         {
             ((App)Application.Current).Logout();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new LeaderActivitieDetailsWindow((Activitie)ActivitiesDataGrid.SelectedItem, user).Show();
+        }
     }
 }
