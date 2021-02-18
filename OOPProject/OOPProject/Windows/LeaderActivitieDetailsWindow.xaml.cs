@@ -37,5 +37,18 @@ namespace OOPProject.Windows
                 userDataGrid.ItemsSource = db.ActivitiesParticipants.Where(ap => ap.ActivitieId == activitie.ActivitieId);
             }
         }
+
+        private void UserDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void userDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((DataGrid)sender).SelectedItem is null)
+                UserDetailsButton.IsEnabled = false;
+            else
+                UserDetailsButton.IsEnabled = true;
+        }
     }
 }

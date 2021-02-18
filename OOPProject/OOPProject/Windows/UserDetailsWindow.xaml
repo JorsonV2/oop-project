@@ -1,0 +1,36 @@
+﻿<Window x:Class="OOPProject.Windows.UserDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOPProject.Windows"
+        mc:Ignorable="d"
+        Title="UserDetailsWindow" HorizontalAlignment="Center" VerticalAlignment="Center" SizeToContent="WidthAndHeight">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <GroupBox Header="User Details" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Name" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <Label Grid.Column="1" x:Name="nameLabel" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+                <Label Grid.Row="1" Content="Details" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+                <RichTextBox Grid.Row="1" Grid.Column="1" x:Name="detailsLabel" MinHeight="23" MinWidth="120" MaxWidth="480" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+                <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Save Details" Click="Button_Click" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+
+            </Grid>
+        </GroupBox>
+
+            
+    </Grid>
+</Window>

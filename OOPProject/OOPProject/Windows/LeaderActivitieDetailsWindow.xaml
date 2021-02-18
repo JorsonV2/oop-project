@@ -13,7 +13,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         
-        <DataGrid x:Name="userDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <DataGrid x:Name="userDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="userDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="loginColumn" Header="Login" Binding="{Binding Login}"/>
                 <DataGridTextColumn x:Name="nameColumn" Header="Name" Binding="{Binding Name}"/>
@@ -22,7 +22,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="UserDetailsButton" Grid.Column="1" Padding="10" Content="Show User Details" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="UserDetailsButton" Grid.Column="1" Padding="10" Content="Show User Details" HorizontalAlignment="Center" VerticalAlignment="Center" Click="UserDetailsButton_Click"/>
 
     </Grid>
 </Window>
