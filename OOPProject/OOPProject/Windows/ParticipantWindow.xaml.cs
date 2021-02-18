@@ -28,12 +28,18 @@ namespace OOPProject
         public void ReloadActivities()
         {
             ReloadNotSignedInDataGrid();
-            ReloadSignedInAndQueueDataGrid();
+            RealoadSignedInDataGrid();
+            //ReloadSignedInAndQueueDataGrid();
         }
 
         public void ReloadNotSignedInDataGrid()
         {
             NotSignedInActivitiesDataGrid.ItemsSource = participantModel.GetNotSignedInActivities(user);
+        }
+
+        public void RealoadSignedInDataGrid()
+        {
+            SignedInActivitiesDataGrid.ItemsSource = participantModel.GetSignerInActivities(user);
         }
 
         public void ReloadSignedInAndQueueDataGrid()

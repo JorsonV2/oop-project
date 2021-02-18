@@ -91,6 +91,10 @@
     <Compile Include="Migrations\202102181820226_InitialCreate.designer.cs">
       <DependentUpon>202102181820226_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102182000122_MapActivitiesAndUsers.cs" />
+    <Compile Include="Migrations\202102182000122_MapActivitiesAndUsers.designer.cs">
+      <DependentUpon>202102182000122_MapActivitiesAndUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\Interfaces\IActivitieModel.cs" />
@@ -144,6 +148,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202102181820226_InitialCreate.resx">
       <DependentUpon>202102181820226_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102182000122_MapActivitiesAndUsers.resx">
+      <DependentUpon>202102182000122_MapActivitiesAndUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

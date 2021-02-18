@@ -19,21 +19,20 @@ namespace OOPProject.Models
             }
         }
 
-        public ICollection<Activitie> GetNotSignedInActivities(User user)
+        public ObservableCollection<Activitie> GetNotSignedInActivities(User user)
         {
             using (var db = new ActivitiesContext())
             {
+                db.Activities.Load();
+                return db.Activities.Local;
+            }
+        }
 
-                var activities = db.Users.Select(u => u.Activities).FirstOrDefault();
-
-                var users = db.Users
-                    .Find(user.Login)
-                    .Activities.ToList();
-
-
-                MessageBox.Show(users.Count().ToString());
-
-                return db.Activities.Where(a => !activities.Contains(a)).ToList();
+        public ICollection<Activitie> GetSignerInActivities(User user)
+        {
+            using (var db = new ActivitiesContext())
+            {
+                return db.ActivitiesParticipants.Where(ap => ap.ParticipantLogin == user.Login).Select(ap => ap.Activitie).ToList();
             }
         }
 
