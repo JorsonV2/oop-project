@@ -1,0 +1,28 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOPProject.Windows"
+        xmlns:Objects="clr-namespace:OOPProject.Db.Objects" x:Class="OOPProject.Windows.LeaderActivitieDetailsWindow"
+        mc:Ignorable="d"
+        Title="LeaderActivitieDetailsWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid x:Name="userDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="loginColumn" Header="Login" Binding="{Binding Login}"/>
+                <DataGridTextColumn x:Name="nameColumn" Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn x:Name="passwordColumn"  Header="Password" Binding="{Binding Password}"/>
+                <DataGridTextColumn x:Name="typeColumn"  Header="Type" Binding="{Binding Type}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="UserDetailsButton" Grid.Column="1" Padding="10" Content="Show User Details" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
