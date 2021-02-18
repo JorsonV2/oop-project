@@ -101,6 +101,7 @@ namespace OOPProject
         private void SignOutFromSingedInButton_Click(object sender, RoutedEventArgs e)
         {
             participantModel.SignOut((Activitie)SignedInActivitiesDataGrid.SelectedItem, user);
+            ReloadActivities();
         }
     }
 }

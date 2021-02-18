@@ -102,7 +102,9 @@ namespace OOPProject.Models
         {
             using (var db = new ActivitiesContext())
             {
-                db.ActivitiesParticipants.Remove(activitie.ActivitiesParticipants.TakeWhile(ap => ap.ActivitieId == activitie.ActivitieId && ap.ParticipantLogin == user.Login).First());
+
+                var activitieParticipant = db.ActivitiesParticipants.Where(ap => ap.ActivitieId == activitie.ActivitieId && ap.ParticipantLogin == user.Login).ToList().FirstOrDefault();
+                db.ActivitiesParticipants.Remove(activitieParticipant);
                 db.SaveChanges();
 
                 return new Response<ActivitieParticipant>(
