@@ -1,0 +1,47 @@
+﻿<Window x:Class="OOPProject.Windows.ParticipantActivitieDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OOPProject.Windows"
+        mc:Ignorable="d"
+        Title="ParticipantActivitieDetails" HorizontalAlignment="Center" VerticalAlignment="Center" SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Activitie Details" BorderThickness="4" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Name" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Column="1" x:Name="NameLabel" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="1" Content="Start Date" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="1" x:Name="StartDateLabel" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Content="End Date" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="2" Grid.Column="1" x:Name="EndDateLabel" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="3" Content="Participants Number" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Label Grid.Row="3" Grid.Column="1" x:Name="ParticipansNumbertLabel" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </Grid>
+        </GroupBox>
+
+        <Label Grid.Column="1" Content="test" x:Name="InfoLabel" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" FontSize="20"/>
+        
+    </Grid>
+</Window>
