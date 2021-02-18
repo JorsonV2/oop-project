@@ -16,7 +16,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <GroupBox Header="Users" BorderThickness="4">
@@ -142,5 +143,7 @@
                 
             </Grid>
         </GroupBox>
+
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Logout" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
     </Grid>
 </Window>

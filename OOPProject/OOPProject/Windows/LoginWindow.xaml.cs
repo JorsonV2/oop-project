@@ -25,6 +25,7 @@ namespace OOPProject
             if (response.Error)
                 MessageBox.Show(response.Message);
             else
+            {
                 switch (response.Data[0].Type)
                 {
                     case UserType.Admin:
@@ -34,10 +35,11 @@ namespace OOPProject
                         new LeaderWindow(response.Data[0]).Show();
                         break;
                     case UserType.Participant:
-                        new ParticipantWindow().Show();
+                        new ParticipantWindow(response.Data[0]).Show();
                         break;
                 }
-            Close();
+                Close();
+            }    
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

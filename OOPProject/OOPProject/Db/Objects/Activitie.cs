@@ -18,5 +18,6 @@ namespace OOPProject.Db.Objects
         [ForeignKey("LeaderLogin")]
         public virtual User User { get; set; }
         public virtual ICollection<ActivitieParticipant> ActivitiesParticipants { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

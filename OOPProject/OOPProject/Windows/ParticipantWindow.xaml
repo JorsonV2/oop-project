@@ -1,12 +1,135 @@
-﻿<Window x:Class="OOPProject.ParticipantWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:OOPProject"
+        xmlns:Objects="clr-namespace:OOPProject.Db.Objects" x:Class="OOPProject.ParticipantWindow"
         mc:Ignorable="d"
-        Title="ParticipantWindow" Height="450" Width="800">
+        Title="ParticipantWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Not signed in activities" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="NotSignedInActivitiesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="NotSignedInActivitiesDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="activitieIdColumn" Header="Activitie Id" Binding="{Binding ActivitieId}" Visibility="Hidden"/>
+
+                        <DataGridTextColumn x:Name="leaderLoginColumn" Header="Leader Login" Binding="{Binding LeaderLogin}" Visibility="Hidden"/>
+                        <DataGridTextColumn x:Name="nameColumn" Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn x:Name="participantsNumberColumn" Header="Participants Number" Binding="{Binding ParticipantsNumber}"/>
+                        <DataGridTemplateColumn x:Name="startDateColumn" Header="Start Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn x:Name="endDateColumn" Header="End Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <tk:DateTimeUpDown Value="{Binding EndDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Grid.Column="1" x:Name="SignInButton" Content="Sign In" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Click="SignInButton_Click"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Column="1" Header="Signed in activities" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="SignedInActivitiesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="SignedInActivitiesDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Activitie Id" Binding="{Binding ActivitieId}" Visibility="Hidden"/>
+
+                        <DataGridTextColumn Header="Leader Login" Binding="{Binding LeaderLogin}" Visibility="Hidden"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn  Header="Participants Number" Binding="{Binding ParticipantsNumber}"/>
+                        <DataGridTemplateColumn  Header="Start Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn  Header="End Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <tk:DateTimeUpDown Value="{Binding EndDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Grid.Column="1" x:Name="SignOutFromSingedInButton" Content="Sign Out" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Signed in activities but in queue" BorderThickness="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="SignedInQueueActivitiesDataGrid" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserDeleteRows="False" EnableRowVirtualization="True" AutoGenerateColumns="False" HorizontalAlignment="Center" VerticalAlignment="Center" SelectionChanged="SignedInQueueActivitiesDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Activitie Id" Binding="{Binding ActivitieId}" Visibility="Hidden"/>
+
+                        <DataGridTextColumn Header="Leader Login" Binding="{Binding LeaderLogin}" Visibility="Hidden"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn  Header="Participants Number" Binding="{Binding ParticipantsNumber}"/>
+                        <DataGridTemplateColumn  Header="Start Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding StartDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn  Header="End Date">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <tk:DateTimeUpDown Value="{Binding EndDate}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Button Grid.Column="1" x:Name="SignOutFromQueueButton" Content="Sign Out" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="1" Header="Your Controlls" BorderThickness="4">
+            <Button Content="Logout" x:Name="LogoutButton" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="LogoutButton_Click"/>
+        </GroupBox>
+
     </Grid>
 </Window>

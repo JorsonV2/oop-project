@@ -92,6 +92,7 @@
     <Compile Include="Models\Interfaces\IUserModel.cs" />
     <Compile Include="Models\LeaderModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ParticipantModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\StartModel.cs" />
     <Compile Include="Windows\ActivitieEditWindow.xaml.cs">

@@ -1,6 +1,7 @@
 ﻿using OOPProject.Db;
 using OOPProject.Db.Objects;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace OOPProject.Models
@@ -11,11 +12,9 @@ namespace OOPProject.Models
         {
             using (var db = new ActivitiesContext())
             {
-                var admins = db.Users
-                .Where(u => u.Type == UserType.Admin)
-                .ToArray();
+                db.Users.Where(u => u.Type == UserType.Admin).Load();
 
-                if (admins.Length == 0)
+                if (db.Users.ToList().Count() == 0)
                 {
                     db.Users.Add(new User
                     {

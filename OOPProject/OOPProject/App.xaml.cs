@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,6 +16,7 @@ namespace OOPProject
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            new StartModel();
             new LoginWindow().Show();
         }
 

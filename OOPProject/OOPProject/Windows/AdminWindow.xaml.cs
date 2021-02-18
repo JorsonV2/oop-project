@@ -62,6 +62,7 @@ namespace OOPProject
             var response = adminModel.CreateUser(NewUserLogin.Text, NewUserPassword.Text, NewUserName.Text, (UserType) NewUserType.SelectedItem);
 
             MessageBox.Show(response.Message);
+            ReloadUsersDataGrid();
         }
 
         private void UsersDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,6 +103,11 @@ namespace OOPProject
         public void ReloadUsersDataGrid()
         {
             UsersDataGrid.ItemsSource = adminModel.GetUsers();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((App)Application.Current).Logout();
         }
     }
 }

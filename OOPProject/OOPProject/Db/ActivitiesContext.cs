@@ -19,6 +19,18 @@ namespace OOPProject.Db
         // Add a DbSet for each entity type that you want to include in your model. For more information 
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Activitie>()
+                .HasMany(x => x.Users)
+                .WithMany(x => x.Activities)
+                .Map(z => {
+                    z.MapLeftKey("ActivitieId");
+                    z.MapRightKey("ParticipantId");
+                    z.ToTable("ActivitiesParticipants");
+                });
+        }
+
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Activitie> Activities { get; set; }
         public virtual DbSet<ActivitieParticipant> ActivitiesParticipants { get; set; }
